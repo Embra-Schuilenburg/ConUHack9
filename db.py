@@ -1,21 +1,22 @@
 from pymongo import MongoClient
+import os
 
 # MongoDB connection string (replace with your actual connection string)
-MONGO_URI = "mongodb://localhost:27017"  # For local MongoDB
-# MONGO_URI = "mongodb+srv://your_user:password@cluster.mongodb.net/mydatabase"  # For Atlas
+
+os.chdir('../Credentials/')
+credential_file = open(os.getcwd()+'/EngiQDB.txt')
+
+MONGO_URI = str(credential_file.readline())  # From your personal credential file
+
 
 # Connect to MongoDB
 client = MongoClient(MONGO_URI)
-db = client["mtg_database"]  # Database name
-collection = db["cards"]  # Collection name
+# Send a ping to confirm a successful connection
+try:
+    client.admin.command('ping')
+    print("Access granted")
+except Exception as e:
+    print(e)
 
-def save_card(card_data):
-    """Save card data to MongoDB."""
-    collection.insert_one(card_data)
-
-def get_all_archetypes():
-    """Retrieve all saved cards."""
-    return list(collection.find({}, {"_id": 0}))  # Exclude MongoDB's `_id` field
-
-def get_archetype(param):
-    return collection.find({"_id": param}) #TODO change after correct data
+credential_file.close()
+#hello
