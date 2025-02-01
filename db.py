@@ -16,3 +16,7 @@ def save_card(card_data):
 def get_all_cards():
     """Retrieve all saved cards."""
     return list(collection.find({}, {"_id": 0}))  # Exclude MongoDB's `_id` field
+
+
+
+#hello
