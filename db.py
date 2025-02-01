@@ -4,7 +4,8 @@ import os
 # MongoDB connection string (replace with your actual connection string)
 
 os.chdir('../Credentials/')
-credential_file = open(os.getcwd()+'/EngiQDB.txt')
+credential_file = open( os.path.join(os.getcwd(),'EngiQDB.txt'))
+print(credential_file)
 
 MONGO_URI = str(credential_file.readline())  # From your personal credential file
 
