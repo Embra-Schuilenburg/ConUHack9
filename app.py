@@ -1,6 +1,8 @@
 import streamlit as st
 import requests
-from db import save_card, get_all_cards
+from db import save_card, get_all_archetypes
+from http.server import HTTPServer, BaseHTTPRequestHandler
+
 
 SCRYFALL_API_URL = "https://api.scryfall.com/cards/search"
 
@@ -31,6 +33,23 @@ if st.button("Search"):
         st.error("No cards found!")
 
 st.sidebar.header("Saved Cards")
-saved_cards = get_all_cards()
+saved_cards = get_all_archetypes()
 for card in saved_cards:
     st.sidebar.write(f"- {card['name']} ({card['set_name']})")
+
+class Serv(BaseHTTPRequestHandler):
+
+    def do_GET(self):
+       if self.path == '/':
+           self.path = '/test.html'
+       try:
+           file_to_open = open(self.path[1:]).read()
+           self.send_response(200)
+       except:
+           file_to_open = "File not found"
+           self.send_response(404)
+       self.end_headers()
+       self.wfile.write(bytes(file_to_open, 'utf-8'))
+
+httpd = HTTPServer(('localhost',8080),Serv)
+httpd.serve_forever()

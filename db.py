@@ -13,10 +13,9 @@ def save_card(card_data):
     """Save card data to MongoDB."""
     collection.insert_one(card_data)
 
-def get_all_cards():
+def get_all_archetypes():
     """Retrieve all saved cards."""
     return list(collection.find({}, {"_id": 0}))  # Exclude MongoDB's `_id` field
 
-
-
-#hello
+def get_archetype(param):
+    return collection.find({"_id": param}) #TODO change after correct data
