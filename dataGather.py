@@ -32,7 +32,7 @@ mydb = client["MTGVersus"]
 mycol = mydb["Overall"]
 
 i = 1
-while i < len(data) - 417:
+while i < len(data):
     post = {"player": data[i][0], "confidence": data[i][1], "WR": data[i + 1][1], "sampleSize": data[i + 2][1]}
     x = mycol.insert_one(post)
     i = i + 3
