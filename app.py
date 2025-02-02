@@ -1,6 +1,6 @@
 import streamlit as st
 import requests
-from db import save_card, get_all_archetypes
+from db import *
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
 

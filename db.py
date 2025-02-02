@@ -1,3 +1,4 @@
+import certifi
 from pymongo import MongoClient
 import os
 
@@ -9,8 +10,9 @@ credential_file = open(os.getcwd()+'/EngiQDB.txt')
 MONGO_URI = str(credential_file.readline())  # From your personal credential file
 
 
+
 # Connect to MongoDB
-client = MongoClient(MONGO_URI)
+client = MongoClient(MONGO_URI,  tlsCAFile=certifi.where())
 # Send a ping to confirm a successful connection
 try:
     client.admin.command('ping')
@@ -19,4 +21,3 @@ except Exception as e:
     print(e)
 
 credential_file.close()
-#hello
