@@ -12,7 +12,7 @@ spin = st.Page("pages/4_spin.py", title="Summoning Ritual",)
 
 # Common Attributes
 st.sidebar.title("Most Credible Source 100 emoji")
-st.sidebar.markdown(":blue[*The Magic that gathered as statistics rules the land.... only one may rise against the onslaught of the **Trumpinator***]")
+st.sidebar.markdown(":green[*\"The Magic that gathered as statistics rules the land.... only one may rise against the onslaught of the **Trumpinator***\"]")
 st.logo(
     image="Data/circle.png",
     icon_image="Data/circle.png",
