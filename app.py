@@ -1,6 +1,7 @@
 import streamlit as st
 import requests
-from db import save_card, get_all_archetypes
+from db import *
+from analysis import *
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
 
@@ -11,7 +12,6 @@ def fetch_cards(card_name):
     params = {"q": card_name}
     response = requests.get(SCRYFALL_API_URL, params=params)
     return response.json().get("data", []) if response.status_code == 200 else []
-
 
 st.title("MTG Card Finder")
 
