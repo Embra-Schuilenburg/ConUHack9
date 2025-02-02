@@ -30,11 +30,12 @@ def search_library():
             
             # Relevant Stats
             tab1, tab2 = search_result.tabs(["Best Winrate", "All Winrates"])
-            
-            source = [('Azorius',53) , ('rakard', 65), ('demonic', 87)]
-            archetype, top_wr = zip(*source)
+
             with tab1:
-                win_rate, sample_size, std_dev = (getSingleArchetypeOverallData(selected_archetype))
+                if (getSingleArchetypeOverallData(selected_archetype) == None):
+                    win_rate, sample_size, std_dev = ("-", "-", "-")
+                else:
+                    win_rate, sample_size, std_dev = (getSingleArchetypeOverallData(selected_archetype))
                 tab1.markdown(f"## Winrate: {win_rate}%")
                 tab1.markdown(f"### Sample size: {sample_size} matches")
             #anim_in(tab1)
