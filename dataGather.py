@@ -52,4 +52,12 @@ except Exception as e:
 #         i = i + 3
 #     j = j + 1
 
+mydb = client["MTGVersus"]
+mycol = mydb["Overall"]
+
+mydoc = mycol.find().sort("player", -1)
+
+for x in mydoc:
+  print(x)
+
 credential_file.close()
