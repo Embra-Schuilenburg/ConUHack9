@@ -1,10 +1,13 @@
+import pathlib
+
 from pymongo import MongoClient
 import os
 
 # MongoDB connection string (replace with your actual connection string)
 
 os.chdir('../Credentials/')
-credential_file = open(os.getcwd()+'/EngiQDB.txt')
+# fix later
+credential_file = open("C:\software\Pycharm\Credentials\EngiQDB.txt")
 
 MONGO_URI = str(credential_file.readline())  # From your personal credential file
 
