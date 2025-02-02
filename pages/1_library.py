@@ -7,6 +7,8 @@ Created on Sat Feb  1 21:27:10 2025
 import streamlit as st
 #import streamlit.components as com
 import base64
+import plotly.express as px
+import matplotlib.pyplot as plt
 
 # --------- Functions --------- #
 def search_library():
@@ -14,7 +16,7 @@ def search_library():
         with search_result:
             
             # Archetype Description
-            st.markdown("---")
+            #st.markdown("---")
             st.markdown(f'# {selected_archetype}')
                 #Type
                 #Description
@@ -24,11 +26,20 @@ def search_library():
                                 in many formats, rather than just a pile of cards that wins.')
             
             # Relevant Stats
-            search_result.tabs(["Best Winrate", "All Winrates"])
-            anim_in()
+            tab1, tab2 = search_result.tabs(["Best Winrate", "All Winrates"])
             
-def anim_in():
-    top_wr = [53, 65, 87]
+            source = [('Azorius',53) , ('rakard', 65), ('demonic', 87)]
+            archetype, top_wr = zip(*source)
+            with tab1:
+                fig = px.bar(top_wr, x=archetype, y=top_wr)
+                fig.update_layout(width=1000)
+            #anim_in(tab1)
+            
+#def anim_in(tab1):
+
+
+
+    
     
     
 #@st.cache(allow_output_mutation=True) 
@@ -37,7 +48,7 @@ def base64_img(image):
         data = file.read()
     return base64.b64encode(data).decode()
 
-    
+
 
 # Data 
 archetype_list = ['Izzet Phoenix', 'Azorius Control', 'Rakdos Demons', 'Selesnya Company', 'Enigmatic Incarnation', 'Mono Black Demons', 'Lotus Field Combo', 'Green Devotion', 'Mardu Greasefang', 'Rakdos Midrange', 'Abzan Greasefang', 'Domain Zur', 'Azorius Spirits', '5 Color Niv-Mizzet', 'Azorius Lotus Field', 'Boros Tokens Control', 'Jund Sacrifice', 'Azorius Humans', 'Mono White Humans', 'Rakdos Transmogrify', 'Rakdos Prowess', 'Orzhov Demons', 'Quintorius Combo', 'Boros Burn', 'Dimir Ninjas', 'Esper Control', '5 Color Landfall', 'Mono Black', 'Red Deck Wins', 'Izzet Creativity', 'Goblins', 'Dimir Rogues', 'Dimir Control', 'Boros Heroic', 'Golgari Sacrifice', 'Atarka Red', 'Golgari Midrange', 'Gruul Prowess', 'Jeskai Creativity', 'Boros Creativity', 'Boros Convoke', 'Boros Transmogrify', 'Sultai Ramp', '4 Color Rona', 'Rakdos Creativity', 'Rakdos Cauldron', 'Esper Greasefang', 'Orzhov Tokens', 'Bring to Beanstalk', 'Orzhov Humans', 'Sultai Yorion', 'Jeskai Control', 'Merfolks', 'Bant Spirits', 'Orzhov Midrange', 'Jeskai Ascendancy', 'Mono Blue Spirits', 'Archfiend Alteration', 'Golgari Roots', 'Rainbow Humans', 'Mardu Reanimator', 'Golgari Demons', 'Soulflayer Time', 'Acererak Combo', 'Selesnya Enchantments', 'Metalwork Colossus', 'Mono White Tokens', 'Orzhov Aggro', 'Sultai Rona', 'Sultai Scapeshift', 'Simic Lands', 'Gruul Aggro', 'Dimir Proft', 'Esper Reanimator', 'Ensoul Artifacts', 'Grixis Phoenix', 'Jund Transmogrify', 'Naya Midrange', 'Izzet Prowess', 'Elves', 'Azorius Mentor', 'Temur Company', 'Gruul Vehicles', 'Dimir Midrange', 'Hardened Scales', 'Bring to Light', 'Neoform', 'Jund Citadel', 'Jund Landfall', 'Aclazotz Slasher Combo', 'Orzhov Superfriends', 'Azorius Flash', 'Selesnya Blink', 'Azorius Tempo', 'Rakdos Sacrifice', 'Gruul Bard Class', 'Mardu Doom', 'Mill', 'Mardu Transmogrify', 'Dimir Demons', 'Esper Midrange', 'Storm Herald', '5 Color Superfriends', '4 Color Omnath', 'Boros Vehicles', 'Golgari Citadel', 'Grinning Ignus Combo', 'Bant Humans', 'Mono Blue Jewel', 'Dredgeless Dredge', 'Simic Company', 'Gruul Company', 'Boros Tokens', '4 Color Greasefang', 'Jeskai Mentor', "Thassa's Bargain", 'Azorius Tokens', 'Mardu Virtuoso', '4 Color Zur', 'Azorius Cauldron', 'Mono Green Stompy', 'Azorius Midrange', 'Orzhov Control', 'Jeskai Fires', 'Boros Midrange', '5 Color Yorion', 'Bant Blink', '4 Color Legends', 'Dimir Faeries', 'Orzhov Reanimator', 'Selesnya Kona', 'Azorius Flyers', 'Orzhov Yorion', 'Bant Control', 'Orzhov Waste Not', 'Azorius Helix', 'Mardu Midrange', 'Rakdos Madness', 'Esper Humans', 'Golgari Deathtouch']
