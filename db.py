@@ -1,3 +1,6 @@
+import pathlib
+
+from pymongo import MongoClient
 import certifi
 from pymongo import MongoClient, collection
 import os
@@ -18,7 +21,7 @@ def get_archetype(param):
     return collection.find({"player": param}) #TODO change after correct data
 
 # Connect to MongoDB
-client = MongoClient(MONGO_URI,  tlsCAFile=certifi.where())
+client = MongoClient(MONGO_URI)
 # Send a ping to confirm a successful connection
 try:
     client.admin.command('ping')
@@ -27,3 +30,4 @@ except Exception as e:
     print(e)
 
 credential_file.close()
+#hello
