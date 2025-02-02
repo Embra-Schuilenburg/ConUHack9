@@ -6,9 +6,16 @@ textwrap
 requests
 PIL
 streamlit
-http.server
+http
 itertools
 pathlib
 certifi
 os
 csv
+st_clickable_images
+st_click_detector
+streamlit_vertical_slider
+streamlit_extras 
+base64
+plotly
+matplotlib
