@@ -2,7 +2,7 @@
 pymongo
 openai
 # json
-textwrap
+# textwrap
 requests
 PIL
 http
