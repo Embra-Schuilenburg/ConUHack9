@@ -5,19 +5,32 @@ import streamlit as st
 # ---------- Setup ------------ #
 
 # Setup Page Navigation
+with open( "style.css" ) as css:
+    st.markdown( f'<style>{css.read()}</style>' , unsafe_allow_html= True) # set fonts
 lib = st.Page("pages/1_library.py", title="Grimoire",)
 meta = st.Page("pages/2_meta.py", title="Strategy Oracle",)
 tier = st.Page("pages/3_tier_list.py", title="Tier List",)
 spin = st.Page("pages/4_spin.py", title="Summoning Ritual",)
 
 # Common Attributes
-st.sidebar.title("Most Credible Source 100 emoji")
-st.sidebar.markdown(":green[*\"The Magic that gathered as statistics rules the land.... only one may rise against the onslaught of the **Trumpinator***\"]")
+st.sidebar.markdown("# __Most Credible Source 100 emoji__")
+st.sidebar.columns([1,7,0.5])[1].markdown(":violet[ \
+    *\"The Magic that gathered as statistics rules the land.... only one may rise against the onslaught of the **Trumpinator***\" \
+    ]")
+
+st.html("""
+  <style>
+    [alt=Logo] {
+      height: 3rem;
+    }
+  </style>
+        """) # set size
 st.logo(
-    image="Data/circle.png",
+    image="Data/Logo.png",
     icon_image="Data/circle.png",
     size="large"
 )
+#st.image('')
 
 # Init Multipage
 pg = st.navigation([lib, meta, tier, spin])
