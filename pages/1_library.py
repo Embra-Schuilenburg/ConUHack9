@@ -53,6 +53,10 @@ page_bg_img = '''
         [data-testid="stHeader"] {
             background-color: rgba(0,0,0,0);
             }
+        [class="stVerticalBlock st-key-result st-emotion-cache-1atdbe9 eiemyj3"] {
+            background-color: rgba(1,1,1,0.5);
+            
+            }
         [data-testid="stImage"] {
             gap: -5rem;
             }
@@ -69,7 +73,7 @@ tags = st.multiselect('Tags',['blue', 'green', 'red', 'black', 'white'], placeho
 st.columns(5)[2].button('Search', on_click=search_library)
 
 # Search Result
-search_result = st.container()
+search_result = st.container(key='result')
 
 
 
