@@ -1,0 +1,21 @@
+# Getting the latest and greatest libraries. Fix if shit breaks
+pymongo
+openai
+json
+textwrap
+requests
+PIL
+streamlit
+http
+itertools
+pathlib
+certifi
+os
+csv
+st_clickable_images
+st_click_detector
+streamlit_vertical_slider
+streamlit_extras 
+base64
+plotly
+matplotlib
