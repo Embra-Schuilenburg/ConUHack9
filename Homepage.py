@@ -9,7 +9,7 @@ with open( "style.css" ) as css:
     st.markdown( f'<style>{css.read()}</style>' , unsafe_allow_html= True) # set fonts
 lib = st.Page("pages/1_library.py", title="Grimoire",)
 meta = st.Page("pages/2_meta.py", title="Strategy Oracle",)
-tier = st.Page("pages/3_tier_list.py", title="Tier List",)
+# tier = st.Page("pages/3_tier_list.py", title="Tier List",) # Commented out for testing - Blank page
 spin = st.Page("pages/4_spin.py", title="Summoning Ritual",)
 
 # Common Attributes
@@ -33,7 +33,7 @@ st.logo(
 #st.image('')
 
 # Init Multipage
-pg = st.navigation([lib, meta, tier, spin])
+pg = st.navigation([lib, meta, spin]) # Removed tier from the list
 pg.run()
 
 
