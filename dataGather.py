@@ -28,14 +28,28 @@ try:
 except Exception as e:
     print(e)
 
-mydb = client["MTGVersus"]
-mycol = mydb["Overall"]
 
-i = 1
-while i < len(data):
-    post = {"player": data[i][0], "confidence": data[i][1], "WR": data[i + 1][1], "sampleSize": data[i + 2][1]}
-    x = mycol.insert_one(post)
-    i = i + 3
 
+# Old, populates Overall, DO NOT UNCOMMENT
+# mydb = client["MTGVersus"]
+# mycol = mydb["Overall"]
+#
+# i = 1
+# while i < len(data):
+#     post = {"player": data[i][0], "confidence": data[i][1], "WR": data[i + 1][1], "sampleSize": data[i + 2][1]}
+#     x = mycol.insert_one(post)
+#     i = i + 3
+
+# Old, populates Matchups, DO NOT UNCOMMENT
+# mydb = client["MTGVersus"]
+# mycol = mydb["Matchups"]
+# i = 1
+# j = 2
+# while j <= len(data[1]):
+#     while i < len(data):
+#         post = {"player": data[i][0], "opp": data[0][j], "confidence": data[i][1], "WR": data[i + 1][1], "sampleSize": data[i + 2][1]}
+#         x = mycol.insert_one(post)
+#         i = i + 3
+#     j = j + 1
 
 credential_file.close()
