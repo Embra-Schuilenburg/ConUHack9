@@ -33,7 +33,7 @@ st.logo(
 #st.image('')
 
 # Init Multipage
-pg = st.navigation([lib, meta, tier, spin])
+pg = st.navigation([lib, meta, spin]) # Removed tier from the list
 pg.run()
 
 
