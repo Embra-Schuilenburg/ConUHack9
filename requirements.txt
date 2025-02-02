@@ -5,7 +5,7 @@ openai
 # textwrap
 requests
 pillow # PIL
-http
+# http
 itertools
 # pathlib
 certifi
