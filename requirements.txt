@@ -4,7 +4,7 @@ openai
 # json
 # textwrap
 requests
-PIL
+pillow # PIL
 http
 itertools
 # pathlib
