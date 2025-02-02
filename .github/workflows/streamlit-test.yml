@@ -1,4 +1,16 @@
-name: Streamlit App Action
-  uses: streamlit/streamlit-app-action@v0.0.3
-  with:
-    app-path: Homepage.py
+name: Streamlit testing
+
+on: [push, pull_request]  # Triggers the action on push and pull request events
+
+jobs:
+  test-streamlit:
+    runs-on: ubuntu-latest  # Specifies the runner environment
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3  # Checks out your repository
+
+      - name: Run Streamlit App Test
+        uses: streamlit/streamlit-app-action@v0.0.3
+        with:
+          app-path: Homepage.py
