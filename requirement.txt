@@ -5,4 +5,10 @@ json
 textwrap
 requests
 PIL
-
+streamlit
+http.server
+itertools
+pathlib
+certifi
+os
+csv
