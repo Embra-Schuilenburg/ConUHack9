@@ -35,9 +35,10 @@ archetypes = archetypes.replace(" \t", ", ")
 
 import csv
 
-with open('C://Users//Em//Desktop//Projects//ConUHacks9//stats.csv', newline='\n') as csvfile:
+with open('Data/statsCleaned.csv', newline='\n') as csvfile:
     # data is read from the relative CSV containing match data, first row of the list contains column headers.
-    # The 0th element of the row-0 is empty to respect the 0th column
+    # The 0th element of the row-0 is empty to respect that the 0th column stores the deck archetypes players can
+    # select from. NOTE: There are more user selection options (120) than meta options (32)
     data = list(csv.reader(csvfile))
 
-print(data[1][0])
+print(data[4][0])
