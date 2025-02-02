@@ -1,17 +1,9 @@
-import pathlib
-
-from pymongo import MongoClient
-import certifi
 from pymongo import MongoClient, collection
-import os
-import csv
+import streamlit as st
+#import csv
+#import certifi
 
-os.chdir("C:\software\Pycharm\conUHacks9")
-
-# fix later
-credential_file = open("C:\software\Pycharm\Credentials\EngiQDB.txt")
-
-MONGO_URI = str(credential_file.readline())  # From your personal credential file
+MONGO_URI = str(st.secrets["DB_URI"])  # From Streamlit secrets file
 
 # Connect to MongoDB
 client = MongoClient(MONGO_URI)
@@ -29,8 +21,4 @@ def getSingleArchetypeOverallData(archetype):
     archetypeQuery = {"player": archetype}
     data = OverallCollection.find(archetypeQuery, {"_id": 0, "archetype": 0 })
     for data in data:
-        return(data.get("confidence"), data.get("WR"), data.get("sampleSize"))
-
-print(getSingleArchetypeOverallData("Izzet Phoenix"))
-
-credential_file.close()
+        return(data.get("WR"), data.get("sampleSize"), data.get("confidence"))

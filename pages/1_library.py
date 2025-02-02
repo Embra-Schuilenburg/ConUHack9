@@ -10,6 +10,9 @@ import base64
 import plotly.express as px
 import matplotlib.pyplot as plt
 
+from dataGather import getSingleArchetypeOverallData
+
+
 # --------- Functions --------- #
 def search_library():
     if selected_archetype:
@@ -31,8 +34,9 @@ def search_library():
             source = [('Azorius',53) , ('rakard', 65), ('demonic', 87)]
             archetype, top_wr = zip(*source)
             with tab1:
-                fig = px.bar(top_wr, x=archetype, y=top_wr)
-                fig.update_layout(width=1000)
+                win_rate, sample_size, std_dev = (getSingleArchetypeOverallData(selected_archetype))
+                tab1.markdown(f"## Winrate: {win_rate}%")
+                tab1.markdown(f"### Sample size: {sample_size} matches")
             #anim_in(tab1)
             
 #def anim_in(tab1):
