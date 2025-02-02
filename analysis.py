@@ -5,8 +5,12 @@ from db import *
 archetypes = get_all_archetypes()
 
 def safest_matchups(archetype):
-    matches = exclude_low_sample(archetype).sort()
+    matches = get_archetype(archetype).sort()
+    return matches[:5]
+
+def risky_matchups(archetype):
+    matches = get_archetype(archetype).sort()
     return list(islice(matches, 5))
 
-def exclude_low_sample(archetype):
-    return [arch for arch in get_archetype(archetype) if archetype.game > 10]
+def most_likely_to_win(archetype):
+    return

@@ -10,12 +10,7 @@ print(credential_file)
 
 MONGO_URI = str(credential_file.readline())  # From your personal credential file
 
-def get_all_archetypes():
-    """Retrieve all saved cards."""
-    return list(collection.find({}, {"player": 0}))  # Exclude MongoDB's `_id` field
 
-def get_archetype(param):
-    return collection.find({"player": param}) #TODO change after correct data
 
 # Connect to MongoDB
 client = MongoClient(MONGO_URI,  tlsCAFile=certifi.where())
@@ -25,5 +20,14 @@ try:
     print("Access granted")
 except Exception as e:
     print(e)
+
+db = client["MTGVersus"]
+
+def get_all_archetypes():
+    """Retrieve all saved cards."""
+    return list(collection.find({}, {"player": 0}))  # Exclude MongoDB's `_id` field
+
+def get_archetype(param):
+    return db.article.find({"$and": [{"player": "Izzet Phoenix", "sampleSize": {"$gte": 10}}]})
 
 credential_file.close()
