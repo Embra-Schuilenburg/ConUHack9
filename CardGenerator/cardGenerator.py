@@ -4,6 +4,15 @@ import urllib.request
 import requests
 from PIL import Image, ImageDraw, ImageFont
 from openai import OpenAI
+import streamlit as st
+
+# Apply OpenAI Key
+import os
+
+st.write(
+    "Has environment variables been set:",
+    os.environ["OPENAI_API_KEY"] == st.secrets["OPENAI_API_KEY"],
+)
 
 # Initialize the OpenAI client
 client = OpenAI()
