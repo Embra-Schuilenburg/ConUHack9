@@ -29,8 +29,8 @@ def getSingleArchetypeOverallData(archetype):
     archetypeQuery = {"player": archetype}
     data = OverallCollection.find(archetypeQuery, {"_id": 0, "archetype": 0 })
     for data in data:
-        return(data.get("confidence"), data.get("WR"), data.get("sampleSize"))
+        return(data.get("WR"), data.get("sampleSize"), data.get("confidence"))
 
-print(getSingleArchetypeOverallData("Izzet Phoenix"))
+
 
 credential_file.close()
