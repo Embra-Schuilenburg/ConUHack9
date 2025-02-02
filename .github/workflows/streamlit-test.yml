@@ -1,14 +1,27 @@
-   - name: Streamlit App Action
-  # You may pin to the exact commit or the version.
-  # uses: streamlit/streamlit-app-action@d1a3fbb4e96e28167fc4d8714c740ac21012bad5
-  uses: streamlit/streamlit-app-action@v0.0.3
-  with:
-    # Filepath to the main app file (`streamlit run <this>`)
-    app-path: Homepage.py # optional, default is streamlit_app.py
-    # Run ruff linting
-    ruff: # optional, default is false
-    # Command line arguments to pass to pytest
-    pytest-args: # optional, default is -v
-    # Skip the provided smoke test. Useful if your app testing requires advanced setup.
-    skip-smoke: # optional, default is false
-          
+name: Streamlit testing
+
+on: [push, pull_request]  # Triggers the action on push and pull request events
+
+jobs:
+  test-streamlit:
+    runs-on: ubuntu-latest  # Specifies the runner environment
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3  # Checks out your repository
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"  # Match your environment's Python version
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt  # Ensure dependencies are listed here
+          pip install streamlit  # Explicitly install Streamlit if not in requirements.txt
+
+      - name: Run Streamlit App Test
+        uses: streamlit/streamlit-app-action@v0.0.3
+        with:
+          app-path: Homepage.py
