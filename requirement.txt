@@ -5,7 +5,6 @@ json
 textwrap
 requests
 PIL
-streamlit
 http
 itertools
 pathlib
