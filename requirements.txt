@@ -1,15 +1,15 @@
 # Getting the latest and greatest libraries. Fix if shit breaks
 pymongo
 openai
-json
+# json
 textwrap
 requests
 PIL
 http
 itertools
-pathlib
+# pathlib
 certifi
-os
+# os
 csv
 st_clickable_images
 st_click_detector
